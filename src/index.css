@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* TIPOGRAFÍAS DEL MENÚ */
+  --font-sans: "Nunito", "Inter", system-ui, -apple-system, sans-serif;
+  --font-title: "Chewy", cursive;         /* Tipografía divertida y dulce para el título */
+  --font-category: "Fredoka", sans-serif; /* Tipografía para Categorías */
+  --font-dish: "Quicksand", sans-serif;   /* Tipografía para Platos y Precios */
+  --font-slogan: "Quicksand", sans-serif;
+
+  /* COLORES BASADOS EN EL LOGO DE TRADICIÓN D'PILITAS LA PASTELERÍA */
+  --color-primary: #E52E2A;      /* Rojo cereza/glaseado de "Tradición" */
+  --color-secondary: #1D52D8;    /* Azul rey brillante de "D'Pilitas" */
+  --color-dark: #3E1A11;         /* Chocolate derretido profundo de "La Pastelería" */
+  --color-light: #FFF5F7;        /* Rosado/crema pastel muy suave */
+  --color-accent-pink: #F472B6;  /* Rosado del borde del escudo del logo */
+  
+  --shadow-glass: 0 8px 32px 0 rgba(229, 46, 42, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.96);
+  --glass-border: rgba(244, 114, 182, 0.3);
+}
+
+body {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Custom scrollbar hide */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Wave decoration for sections */
+@keyframes wave {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+}
+
+.wave-icon {
+  animation: wave 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Category header underline animation */
+.category-underline {
+  position: relative;
+}
+
+.category-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 2px;
+}
